@@ -1,0 +1,58 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.15 Chrome/134.0.6998.205 Electron/35.2.1 Safari/537.36" version="26.2.15">
+  <diagram id="usecase-admin" name="管理后台用例图">
+    <mxGraphModel dx="1409" dy="833" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sys" value="Web 管理后台" style="shape=umlFrame;whiteSpace=wrap;html=1;width=130;height=20;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="30" width="500" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" value="管理员" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="220" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1" value="登录管理后台" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="280" y="50" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" value="查看数据大盘&#xa;(统计/图表)" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="280" y="120" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" value="管理用户&#xa;(查看/改角色)" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="280" y="195" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4" value="管理识别记录&#xa;(查看/删除)" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="280" y="270" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" value="管理新闻资讯&#xa;(创建/发布/删除)" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="280" y="345" width="170" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6" value="管理社区帖子&#xa;(查看/删除)" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="280" y="420" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="uc7" value="管理百科词条&#xa;(查看/删除)" style="ellipse;whiteSpace=wrap;html=1;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="480" y="380" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" style="" parent="1" source="admin" target="uc1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" style="" parent="1" source="admin" target="uc2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" style="" parent="1" source="admin" target="uc3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" style="" parent="1" source="admin" target="uc4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" style="" parent="1" source="admin" target="uc5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" style="" parent="1" source="admin" target="uc6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" style="" parent="1" source="admin" target="uc7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

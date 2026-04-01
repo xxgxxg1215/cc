@@ -1,0 +1,9 @@
+<view class="container" wx:if="{{news}}">
+  <view class="news-title">{{news.title}}</view>
+  <view class="news-meta">
+    <text class="news-author">{{news.author}}</text>
+    <text class="news-date">{{news.created_at}}</text>
+  </view>
+  <image class="news-cover" src="{{news.cover_image}}" mode="widthFix" wx:if="{{news.cover_image}}"></image>
+  <view class="news-content">{{news.content}}</view>
+</view>

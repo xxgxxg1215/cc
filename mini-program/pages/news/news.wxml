@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="page-title">📰 农业资讯</view>
+  <view wx:if="{{newsList.length === 0 && !loading}}" class="empty">暂无资讯</view>
+  <view class="news-card" wx:for="{{newsList}}" wx:key="id" bindtap="onTapNews" data-id="{{item.id}}">
+    <image class="news-cover" src="{{item.cover_image}}" mode="aspectFill" wx:if="{{item.cover_image}}"></image>
+    <view class="news-info">
+      <view class="news-title">{{item.title}}</view>
+      <view class="news-meta">
+        <text class="news-author">{{item.author}}</text>
+        <text class="news-date">{{item.created_at}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{loading}}" class="loading-tip">加载中...</view>
+  <view wx:if="{{noMore && newsList.length > 0}}" class="loading-tip">没有更多了</view>
+</view>

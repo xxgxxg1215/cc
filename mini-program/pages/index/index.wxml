@@ -1,0 +1,99 @@
+<!--pages/index/index.wxml — 首页-->
+<view class="container">
+
+  <!-- 天气卡片 -->
+  <view class="weather-card" wx:if="{{weather}}">
+    <view class="weather-main">
+      <view class="weather-temp">{{weather.temp}}°</view>
+      <view class="weather-info">
+        <view class="weather-text">{{weather.text}}</view>
+        <view class="weather-loc">{{weather.location}}</view>
+      </view>
+    </view>
+    <view class="weather-detail">
+      <text>💧 湿度 {{weather.humidity}}%</text>
+      <text>🌬️ {{weather.wind_dir}} {{weather.wind_scale}}级</text>
+    </view>
+    <view class="farm-tip">
+      <text class="farm-tip-icon">🌾</text>
+      <text class="farm-tip-text">{{weather.farm_tip}}</text>
+    </view>
+  </view>
+
+  <!-- Banner 区域 -->
+  <view class="banner">
+    <view class="banner-icon">
+      <view class="leaf-icon"></view>
+    </view>
+    <view class="banner-title">农作物病害识别</view>
+    <view class="banner-desc">拍照或上传图片，AI 智能识别作物病害并提供防治建议</view>
+  </view>
+
+  <!-- 操作区域 -->
+  <view class="action-area">
+
+    <!-- 拍照按钮 -->
+    <view class="action-card" bindtap="onTakePhoto">
+      <view class="action-icon camera-icon">
+        <view class="icon-camera"></view>
+      </view>
+      <view class="action-text">
+        <view class="action-title">拍照识别</view>
+        <view class="action-hint">打开相机拍摄作物叶片</view>
+      </view>
+      <view class="action-arrow">›</view>
+    </view>
+
+    <!-- 相册按钮 -->
+    <view class="action-card" bindtap="onChooseAlbum">
+      <view class="action-icon album-icon">
+        <view class="icon-album"></view>
+      </view>
+      <view class="action-text">
+        <view class="action-title">相册选择</view>
+        <view class="action-hint">从手机相册选取图片</view>
+      </view>
+      <view class="action-arrow">›</view>
+    </view>
+
+  </view>
+
+  <!-- 最新资讯 -->
+  <view class="card info-card" wx:if="{{newsList.length > 0}}">
+    <view class="info-title">最新资讯</view>
+    <view class="news-item" wx:for="{{newsList}}" wx:key="id" bindtap="onTapNews" data-id="{{item.id}}">
+      <view class="news-title">{{item.title}}</view>
+      <view class="news-date">{{item.created_at}}</view>
+    </view>
+  </view>
+
+  <!-- 支持作物 -->
+  <view class="card info-card">
+    <view class="info-title">支持识别的作物</view>
+    <view class="crop-tags">
+      <view class="crop-tag">苹果</view>
+      <view class="crop-tag">番茄</view>
+      <view class="crop-tag">马铃薯</view>
+      <view class="crop-tag">玉米</view>
+      <view class="crop-tag">葡萄</view>
+      <view class="crop-tag">草莓</view>
+      <view class="crop-tag">甜椒</view>
+      <view class="crop-tag">樱桃</view>
+      <view class="crop-tag">柑橘</view>
+      <view class="crop-tag">桃</view>
+      <view class="crop-tag">大豆</view>
+      <view class="crop-tag">南瓜</view>
+      <view class="crop-tag">蓝莓</view>
+      <view class="crop-tag">树莓</view>
+    </view>
+  </view>
+
+  <!-- 使用提示 -->
+  <view class="tips">
+    <view class="tips-title">使用提示</view>
+    <view class="tips-item">· 拍摄时请对准叶片，保持清晰</view>
+    <view class="tips-item">· 尽量在自然光下拍摄</view>
+    <view class="tips-item">· 选择有明显症状的叶片效果更好</view>
+  </view>
+
+</view>

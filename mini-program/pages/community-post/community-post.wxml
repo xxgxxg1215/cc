@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="page-title">✏️ 发布帖子</view>
+  <view class="form-card">
+    <input class="title-input" placeholder="输入标题..." bindinput="onTitleInput" value="{{title}}" maxlength="50" />
+    <textarea class="content-input" placeholder="分享你的种植经验或求助问题..." bindinput="onContentInput" value="{{content}}" maxlength="2000"></textarea>
+  </view>
+  <button class="btn-primary" bindtap="onSubmit">发布</button>
+</view>

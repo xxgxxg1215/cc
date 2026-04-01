@@ -1,0 +1,114 @@
+<mxfile host="app.diagrams.net" modified="2026-03-06">
+  <diagram id="sys-arch" name="系统总体架构图">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Client Layer -->
+        <mxCell id="layer1" value="客户端层" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;horizontal=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="30" width="1000" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1" value="微信小程序" style="swimlane;startSize=25;fillColor=#FFFFFF;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="layer1">
+          <mxGeometry x="30" y="40" width="440" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1a" value="病害识别" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c1">
+          <mxGeometry x="10" y="32" width="70" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1b" value="病害百科" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c1">
+          <mxGeometry x="90" y="32" width="70" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1c" value="社区交流" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c1">
+          <mxGeometry x="170" y="32" width="70" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1d" value="农业资讯" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c1">
+          <mxGeometry x="250" y="32" width="70" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c1e" value="个人中心" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c1">
+          <mxGeometry x="330" y="32" width="70" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2" value="Web 管理后台" style="swimlane;startSize=25;fillColor=#FFFFFF;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="layer1">
+          <mxGeometry x="510" y="40" width="460" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2a" value="数据大盘" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c2">
+          <mxGeometry x="10" y="32" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2b" value="用户管理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c2">
+          <mxGeometry x="100" y="32" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2c" value="新闻管理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c2">
+          <mxGeometry x="190" y="32" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2d" value="社区管理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c2">
+          <mxGeometry x="280" y="32" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="c2e" value="百科管理" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="c2">
+          <mxGeometry x="370" y="32" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <!-- HTTP/HTTPS Arrow -->
+        <mxCell id="arrow1" value="HTTP/HTTPS&#xa;RESTful API&#xa;+ JWT Token" style="text;html=1;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="480" y="180" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="170" as="sourcePoint"/>
+            <mxPoint x="580" y="240" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <!-- Server Layer -->
+        <mxCell id="layer2" value="服务层（FastAPI + Uvicorn）" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="1000" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="识别模块&#xa;/predict" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="20" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="用户认证&#xa;/api/user" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="145" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="历史记录&#xa;/api/history" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="270" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="病害百科&#xa;/api/encyclopedia" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="395" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5" value="社区互动&#xa;/api/community" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="520" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s6" value="天气服务&#xa;/api/weather" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="645" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s7" value="新闻资讯&#xa;/api/news" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="770" y="45" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="s8" value="管理后台&#xa;/admin" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="layer2">
+          <mxGeometry x="895" y="45" width="90" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="mid" value="ONNX Runtime 推理引擎 | SQLAlchemy ORM | JWT 认证中间件" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="layer2">
+          <mxGeometry x="20" y="120" width="965" height="40" as="geometry"/>
+        </mxCell>
+        <!-- Data Layer -->
+        <mxCell id="layer3" value="数据层" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="1000" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="d1" value="MySQL 数据库&#xa;(crop_disease)&#xa;7 张数据表" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="layer3">
+          <mxGeometry x="80" y="35" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="ONNX 模型&#xa;(resnet50.onnx)&#xa;38 分类" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="layer3">
+          <mxGeometry x="340" y="35" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="文件存储&#xa;(uploads/)&#xa;用户上传图片" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="layer3">
+          <mxGeometry x="600" y="35" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" value="外部 API&#xa;(Open-Meteo 天气)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="layer3">
+          <mxGeometry x="830" y="35" width="150" height="80" as="geometry"/>
+        </mxCell>
+        <!-- Connection arrows -->
+        <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="440" as="sourcePoint"/>
+            <mxPoint x="580" y="480" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

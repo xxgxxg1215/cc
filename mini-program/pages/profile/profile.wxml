@@ -1,0 +1,33 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="profile-header">
+    <view wx:if="{{isLoggedIn}}" class="user-section">
+      <view class="avatar-large">{{userInfo.nickname[0] || '?'}}</view>
+      <view class="user-name">{{userInfo.nickname}}</view>
+      <view class="user-role" wx:if="{{userInfo.role === 'expert'}}">🌟 认证专家</view>
+    </view>
+    <view wx:else class="login-section">
+      <view class="avatar-large">?</view>
+      <view class="login-hint">登录后体验更多功能</view>
+      <button class="btn-login" bindtap="onLogin">微信登录</button>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-card">
+    <view class="menu-item" bindtap="onGoHistory">
+      <text class="menu-icon">📋</text>
+      <text class="menu-text">识别历史</text>
+      <text class="menu-badge" wx:if="{{historyCount > 0}}">{{historyCount}}</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 退出 -->
+  <view class="logout-area" wx:if="{{isLoggedIn}}">
+    <button class="btn-logout" bindtap="onLogout">退出登录</button>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version">农作物病害识别系统 v2.0</view>
+</view>

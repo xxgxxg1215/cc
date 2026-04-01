@@ -1,0 +1,247 @@
+/* pages/index/index.wxss */
+
+.container {
+  padding: 32rpx 32rpx 180rpx;
+}
+
+/* ---- 天气卡片 ---- */
+.weather-card {
+  background: linear-gradient(135deg, #059669, #0d9488);
+  border-radius: 24rpx;
+  padding: 28rpx 32rpx;
+  color: #FFFFFF;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(5, 150, 105, 0.25);
+}
+.weather-main {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+.weather-temp {
+  font-size: 64rpx;
+  font-weight: 700;
+  margin-right: 24rpx;
+}
+.weather-text {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.weather-loc {
+  font-size: 22rpx;
+  opacity: 0.8;
+  margin-top: 4rpx;
+}
+.weather-detail {
+  display: flex;
+  gap: 32rpx;
+  font-size: 22rpx;
+  opacity: 0.9;
+  margin-bottom: 16rpx;
+}
+.farm-tip {
+  background: rgba(255,255,255,.15);
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+}
+.farm-tip-icon { font-size: 28rpx; flex-shrink: 0; }
+.farm-tip-text { font-size: 24rpx; line-height: 1.5; }
+
+/* ---- 新闻 ---- */
+.news-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #F3F4F6;
+}
+.news-item:last-child { border-bottom: none; }
+.news-title { font-size: 26rpx; color: #374151; flex: 1; }
+.news-date { font-size: 22rpx; color: #9CA3AF; margin-left: 16rpx; flex-shrink: 0; }
+
+/* ---- Banner ---- */
+.banner {
+  text-align: center;
+  padding: 60rpx 32rpx 48rpx;
+}
+
+.banner-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto 28rpx;
+  background: linear-gradient(135deg, #059669, #10B981);
+  border-radius: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaf-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border: 6rpx solid #FFFFFF;
+  border-radius: 0 40rpx 0 40rpx;
+  transform: rotate(-30deg);
+}
+
+.banner-title {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #064E3B;
+  margin-bottom: 12rpx;
+}
+
+.banner-desc {
+  font-size: 26rpx;
+  color: #6B7280;
+  line-height: 1.5;
+}
+
+/* ---- 操作卡片 ---- */
+.action-area {
+  margin-bottom: 24rpx;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  transition: all 150ms ease;
+}
+
+.action-card:active {
+  opacity: 0.85;
+}
+
+.action-icon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.camera-icon {
+  background: linear-gradient(135deg, #059669, #10B981);
+}
+
+.icon-camera {
+  width: 40rpx;
+  height: 32rpx;
+  border: 4rpx solid #FFFFFF;
+  border-radius: 6rpx;
+  position: relative;
+}
+
+.icon-camera::before {
+  content: '';
+  position: absolute;
+  width: 18rpx;
+  height: 18rpx;
+  border: 3rpx solid #FFFFFF;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.album-icon {
+  background: linear-gradient(135deg, #0891B2, #06B6D4);
+}
+
+.icon-album {
+  width: 36rpx;
+  height: 36rpx;
+  border: 4rpx solid #FFFFFF;
+  border-radius: 6rpx;
+  position: relative;
+}
+
+.icon-album::before {
+  content: '';
+  position: absolute;
+  width: 22rpx;
+  height: 16rpx;
+  border-bottom: 3rpx solid #FFFFFF;
+  border-left: 3rpx solid #FFFFFF;
+  bottom: 4rpx;
+  left: 4rpx;
+  transform: rotate(-10deg);
+}
+
+.action-text {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.action-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 4rpx;
+}
+
+.action-hint {
+  font-size: 24rpx;
+  color: #9CA3AF;
+}
+
+.action-arrow {
+  font-size: 40rpx;
+  color: #D1D5DB;
+  font-weight: 300;
+}
+
+/* ---- 支持作物信息 ---- */
+.info-card {
+  padding: 28rpx 32rpx;
+}
+
+.info-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 20rpx;
+}
+
+.crop-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.crop-tag {
+  font-size: 24rpx;
+  color: #059669;
+  background: #ECFDF5;
+  padding: 8rpx 20rpx;
+  border-radius: 8rpx;
+  font-weight: 500;
+}
+
+/* ---- 使用提示 ---- */
+.tips {
+  padding: 24rpx 8rpx;
+}
+
+.tips-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #6B7280;
+  margin-bottom: 12rpx;
+}
+
+.tips-item {
+  font-size: 24rpx;
+  color: #9CA3AF;
+  line-height: 2;
+}

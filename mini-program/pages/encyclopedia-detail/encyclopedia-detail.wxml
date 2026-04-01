@@ -1,0 +1,17 @@
+<view class="container" wx:if="{{detail}}">
+  <view class="detail-header">
+    <view class="detail-crop">{{detail.crop_name}}</view>
+    <view class="detail-name">{{detail.disease_name}}</view>
+  </view>
+  <view class="card"><view class="section-title">📝 简介</view><view class="section-text">{{detail.description}}</view></view>
+  <view class="card"><view class="section-title">🔍 症状</view><view class="section-text">{{detail.symptoms}}</view></view>
+  <view class="card"><view class="section-title">⚠️ 发病原因</view><view class="section-text">{{detail.cause}}</view></view>
+  <view class="card" wx:if="{{detail.prevention.length > 0}}">
+    <view class="section-title">🛡️ 防治措施</view>
+    <view class="list-item" wx:for="{{detail.prevention}}" wx:key="*this">• {{item}}</view>
+  </view>
+  <view class="card" wx:if="{{detail.medicine.length > 0}}">
+    <view class="section-title">💊 推荐用药</view>
+    <view class="list-item" wx:for="{{detail.medicine}}" wx:key="*this">• {{item}}</view>
+  </view>
+</view>

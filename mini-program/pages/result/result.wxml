@@ -1,0 +1,113 @@
+<!--pages/result/result.wxml — 识别结果页-->
+<view class="container" wx:if="{{result}}">
+
+  <!-- 图片预览 -->
+  <view class="image-section" bindtap="onPreviewImage">
+    <image class="preview-image" src="{{imagePath}}" mode="aspectFill"></image>
+  </view>
+
+  <!-- 识别结果 -->
+  <view class="card result-card">
+    <view class="result-header">
+      <view class="result-name">{{result.prediction}}</view>
+      <view class="{{result.is_healthy ? 'tag-healthy' : 'tag-disease'}}">
+        {{result.is_healthy ? '健康' : '病害'}}
+      </view>
+    </view>
+    <view class="confidence-row">
+      <text class="confidence-label">置信度</text>
+      <text class="confidence-value">{{result.confidence}}%</text>
+    </view>
+    <view class="confidence-bar">
+      <view class="confidence-fill {{result.is_healthy ? 'fill-healthy' : 'fill-disease'}}" style="width: {{result.confidence}}%"></view>
+    </view>
+  </view>
+
+  <!-- Top-5 预测 -->
+  <view class="card">
+    <view class="section-title">Top-5 预测结果</view>
+    <view class="top5-list">
+      <view class="top5-item" wx:for="{{result.top5}}" wx:key="class_name">
+        <view class="top5-rank">{{index + 1}}</view>
+        <view class="top5-info">
+          <view class="top5-name">{{item.name_cn}}</view>
+          <view class="top5-bar-bg">
+            <view class="top5-bar-fill" style="width: {{item.confidence}}%"></view>
+          </view>
+        </view>
+        <view class="top5-conf">{{item.confidence}}%</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 防治建议（仅病害时显示详细信息） -->
+  <view class="card treatment-card">
+    <view class="section-title">{{result.is_healthy ? '养护建议' : '防治建议'}}</view>
+
+    <!-- 病害描述 -->
+    <view class="treatment-block">
+      <view class="treatment-label">
+        <view class="label-dot"></view>
+        简介
+      </view>
+      <view class="treatment-content">{{result.treatment.description}}</view>
+    </view>
+
+    <!-- 症状（病害时） -->
+    <view class="treatment-block" wx:if="{{!result.is_healthy}}">
+      <view class="treatment-label">
+        <view class="label-dot dot-orange"></view>
+        症状表现
+      </view>
+      <view class="treatment-content">{{result.treatment.symptoms}}</view>
+    </view>
+
+    <!-- 发病原因（病害时） -->
+    <view class="treatment-block" wx:if="{{!result.is_healthy && result.treatment.cause !== '无'}}">
+      <view class="treatment-label">
+        <view class="label-dot dot-red"></view>
+        发病原因
+      </view>
+      <view class="treatment-content">{{result.treatment.cause}}</view>
+    </view>
+
+    <!-- 防治 / 养护措施 -->
+    <view class="treatment-block">
+      <view class="treatment-label">
+        <view class="label-dot dot-green"></view>
+        {{result.is_healthy ? '养护措施' : '防治措施'}}
+      </view>
+      <view class="treatment-list">
+        <view class="treatment-item" wx:for="{{result.treatment.prevention}}" wx:key="*this">
+          <text class="item-index">{{index + 1}}</text>
+          <text class="item-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 推荐用药（病害时） -->
+    <view class="treatment-block" wx:if="{{result.treatment.medicine.length > 0}}">
+      <view class="treatment-label">
+        <view class="label-dot dot-blue"></view>
+        推荐用药
+      </view>
+      <view class="treatment-list">
+        <view class="treatment-item" wx:for="{{result.treatment.medicine}}" wx:key="*this">
+          <text class="item-index">{{index + 1}}</text>
+          <text class="item-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作 -->
+  <view class="action-bottom">
+    <button class="btn-primary" bindtap="onRetry">继续识别</button>
+  </view>
+
+</view>
+
+<!-- Loading -->
+<view class="loading-container" wx:if="{{!result}}">
+  <view class="loading-text">加载中...</view>
+</view>

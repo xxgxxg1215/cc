@@ -1,0 +1,100 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.15 Chrome/134.0.6998.205 Electron/35.2.1 Safari/537.36" version="26.2.15">
+  <diagram id="seq-recognize" name="病害识别时序图">
+    <mxGraphModel dx="1409" dy="833" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;participant=umlActor;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="80" y="30" width="20" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="mp" value="微信小程序" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="250" y="30" width="120" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="FastAPI&#xa;后端" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="480" y="30" width="100" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="onnx" value="ONNX&#xa;Runtime" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="680" y="30" width="100" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="MySQL&#xa;数据库" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="880" y="30" width="100" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="1. 拍照/选择图片" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="110" as="sourcePoint" />
+            <mxPoint x="305" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2. wx.uploadFile(/predict)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="160" as="sourcePoint" />
+            <mxPoint x="525" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3. 图像预处理&#xa;(Resize→归一化→标准化)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=10;dashed=1;" parent="1" edge="1">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint x="535" y="210" as="sourcePoint" />
+            <mxPoint x="535" y="250" as="targetPoint" />
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="580" y="210" />
+              <mxPoint x="580" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4. 模型推理(input tensor)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="535" y="280" as="sourcePoint" />
+            <mxPoint x="725" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5. 返回 logits (1×38)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="725" y="330" as="sourcePoint" />
+            <mxPoint x="535" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6. Softmax → Top-5 排序" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=10;dashed=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="535" y="370" as="sourcePoint" />
+            <mxPoint x="535" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="370" />
+              <mxPoint x="580" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7. 查询病害防治信息" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="535" y="440" as="sourcePoint" />
+            <mxPoint x="925" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8. 返回防治建议(症状/原因/用药)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="925" y="490" as="sourcePoint" />
+            <mxPoint x="535" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9. 保存识别记录" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="535" y="530" as="sourcePoint" />
+            <mxPoint x="925" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10. 返回识别结果 JSON" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="590" as="sourcePoint" />
+            <mxPoint x="315" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="11. 展示识别结果页&#xa;(Top-5 + 防治建议)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="650" as="sourcePoint" />
+            <mxPoint x="90" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

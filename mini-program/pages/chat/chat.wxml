@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- 消息列表 -->
+  <scroll-view
+    class="messages"
+    scroll-y="true"
+    scroll-into-view="{{ scrollIntoView }}"
+    scroll-with-animation="true"
+  >
+    <view wx:for="{{ messages }}" wx:key="id" id="msg-{{ item.id }}" class="message-item {{ item.role }}">
+      <view class="message-avatar">
+        <view wx:if="{{ item.role === 'assistant' }}" class="avatar bot">🤖</view>
+        <view wx:else class="avatar user">👤</view>
+      </view>
+      <view class="message-bubble {{ item.role }}">
+        <text class="message-text">{{ item.content }}</text>
+      </view>
+    </view>
+
+    <!-- 加载提示 -->
+    <view wx:if="{{ loading }}" class="message-item assistant">
+      <view class="message-avatar">
+        <view class="avatar bot">🤖</view>
+      </view>
+      <view class="message-bubble assistant">
+        <view class="loading">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入框 -->
+  <view class="input-area" style="margin-bottom: {{ keyboardHeight }}px">
+    <input
+      type="text"
+      class="input-box"
+      placeholder="输入您的农业问题..."
+      value="{{ inputValue }}"
+      bindinput="onInputChange"
+      bindconfirm="onSendMessage"
+      placeholder-class="placeholder"
+    />
+    <button
+      class="send-btn"
+      bindtap="onSendMessage"
+      disabled="{{ !inputValue.trim() || loading }}"
+    >
+      发送
+    </button>
+  </view>
+</view>

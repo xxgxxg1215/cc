@@ -1,0 +1,78 @@
+{% extends "admin_base.html" %}
+{% set active = "community" %}
+{% block page_title %}社区帖子{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <span class="icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg></span>
+            社区帖子管理
+        </div>
+        <div class="card-meta">共 {{ total }} 条</div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>标题</th>
+                <th>内容摘要</th>
+                <th>互动</th>
+                <th>发布时间</th>
+                <th style="text-align:right;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in posts %}
+            <tr>
+                <td class="text-muted" style="font-weight:500;">#{{ p.id }}</td>
+                <td style="font-weight:500;">{{ p.title }}</td>
+                <td class="text-muted"
+                    style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ p.content[:60]
+                    }}</td>
+                <td>
+                    <div class="flex-gap">
+                        <span class="tag tag-green" style="gap:3px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                style="width:12px;height:12px;">
+                                <path
+                                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                            </svg>
+                            {{ p.like_count }}
+                        </span>
+                        <span class="tag tag-blue" style="gap:3px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                style="width:12px;height:12px;">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                            </svg>
+                            {{ p.comment_count }}
+                        </span>
+                    </div>
+                </td>
+                <td class="text-muted text-sm">{{ p.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td style="text-align:right;">
+                    <form method="POST" action="/admin/community/delete/{{ p.id }}"
+                        onsubmit="return confirm('删除帖子将同时删除所有评论，确认删除？')">
+                        <button type="submit" class="btn btn-sm btn-danger">删除</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% if not posts %}
+            <tr>
+                <td colspan="6" class="empty-state">暂无帖子</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    {% if total_pages > 1 %}
+    <div class="pagination">
+        {% for pg in range(1, total_pages + 1) %}
+        <a href="?page={{ pg }}" class="{% if pg == page %}current{% endif %}">{{ pg }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
