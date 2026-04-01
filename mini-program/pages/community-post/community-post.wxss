@@ -1,0 +1,5 @@
+.container { padding: 32rpx; }
+.page-title { font-size: 36rpx; font-weight: 700; color: #064E3B; margin-bottom: 24rpx; }
+.form-card { background: #fff; border-radius: 20rpx; padding: 28rpx; margin-bottom: 24rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,.05); }
+.title-input { font-size: 32rpx; font-weight: 600; padding: 16rpx 0; border-bottom: 1rpx solid #E5E7EB; margin-bottom: 16rpx; }
+.content-input { width: 100%; min-height: 300rpx; font-size: 28rpx; line-height: 1.8; padding: 16rpx 0; }

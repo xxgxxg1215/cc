@@ -1,0 +1,78 @@
+{% extends "admin_base.html" %}
+{% set active = "encyclopedia" %}
+{% block page_title %}病害百科{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <span class="icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg></span>
+            病害百科管理
+        </div>
+        <div class="card-meta">共 {{ items|length }} 条</div>
+    </div>
+
+    <!-- Filters -->
+    <form method="GET" action="/admin/encyclopedia" class="mb-16"
+        style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <div class="search-bar" style="flex:1;max-width:320px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" name="keyword" placeholder="搜索病害名称..." value="{{ keyword }}">
+        </div>
+        <div class="filter-tabs">
+            <a href="/admin/encyclopedia" class="filter-tab {% if not current_crop %}active{% endif %}">全部</a>
+            {% for c in crop_list %}
+            <a href="/admin/encyclopedia?crop={{ c }}&keyword={{ keyword }}"
+                class="filter-tab {% if current_crop == c %}active{% endif %}">{{ c }}</a>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-sm btn-outline">筛选</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>作物</th>
+                <th>病害名称</th>
+                <th>英文标识</th>
+                <th>简介</th>
+                <th style="text-align:right;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td class="text-muted" style="font-weight:500;">#{{ item.id }}</td>
+                <td><span class="tag tag-green">{{ item.crop_name }}</span></td>
+                <td style="font-weight:500;">{{ item.disease_name }}</td>
+                <td class="text-mono text-muted">{{ item.disease_en }}</td>
+                <td class="text-muted"
+                    style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{
+                    item.description[:60] }}</td>
+                <td style="text-align:right;">
+                    <form method="POST" action="/admin/encyclopedia/delete/{{ item.id }}"
+                        onsubmit="return confirm('确认删除此百科词条？')">
+                        <button type="submit" class="btn btn-sm btn-danger">删除</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if total_pages > 1 %}
+    <div class="pagination">
+        {% for p in range(1, total_pages + 1) %}
+        <a href="?page={{ p }}&keyword={{ keyword }}&crop={{ current_crop }}"
+            class="{% if p == page %}current{% endif %}">{{ p }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

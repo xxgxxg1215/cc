@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="page-title">📖 病害百科</view>
+  <input class="search-input" placeholder="搜索病害名称..." bindinput="onSearch" value="{{keyword}}" />
+  <scroll-view scroll-x class="crop-scroll">
+    <view class="crop-tab {{currentCrop === '' ? 'active' : ''}}" bindtap="onSelectCrop" data-crop="">全部</view>
+    <view class="crop-tab {{currentCrop === item ? 'active' : ''}}" wx:for="{{crops}}" wx:key="*this" bindtap="onSelectCrop" data-crop="{{item}}">{{item}}</view>
+  </scroll-view>
+  <view wx:if="{{list.length === 0}}" class="empty">暂无数据</view>
+  <view class="enc-card" wx:for="{{list}}" wx:key="id" bindtap="onTapItem" data-id="{{item.id}}">
+    <view class="enc-crop-tag">{{item.crop_name}}</view>
+    <view class="enc-name">{{item.disease_name}}</view>
+    <view class="enc-desc">{{item.description}}</view>
+  </view>
+</view>

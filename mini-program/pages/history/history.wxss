@@ -1,0 +1,20 @@
+.container { padding: 32rpx 32rpx 120rpx; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24rpx; }
+.page-title { font-size: 36rpx; font-weight: 700; color: #064E3B; }
+.clear-btn { font-size: 26rpx; color: #DC2626; }
+.empty-state { text-align: center; padding: 120rpx 0; }
+.empty-icon { font-size: 80rpx; display: block; margin-bottom: 24rpx; }
+.empty-text { font-size: 30rpx; color: #6B7280; display: block; margin-bottom: 8rpx; }
+.empty-hint { font-size: 24rpx; color: #9CA3AF; }
+.history-card {
+  display: flex; align-items: center; background: #fff; border-radius: 20rpx;
+  padding: 24rpx; margin-bottom: 16rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,.05);
+}
+.history-img { width: 100rpx; height: 100rpx; border-radius: 12rpx; flex-shrink: 0; background: #F3F4F6; }
+.history-info { flex: 1; margin-left: 20rpx; }
+.history-name { font-size: 28rpx; font-weight: 600; color: #1F2937; margin-bottom: 8rpx; }
+.history-meta { display: flex; align-items: center; gap: 16rpx; margin-bottom: 6rpx; }
+.history-conf { font-size: 22rpx; color: #6B7280; }
+.history-time { font-size: 22rpx; color: #9CA3AF; }
+.history-del { width: 48rpx; height: 48rpx; display: flex; align-items: center; justify-content: center; color: #D1D5DB; font-size: 28rpx; flex-shrink: 0; }
+.loading-tip { text-align: center; padding: 24rpx; font-size: 24rpx; color: #9CA3AF; }

@@ -1,0 +1,48 @@
+<mxfile host="app.diagrams.net" modified="2026-03-06">
+  <diagram id="usecase-admin" name="管理后台用例图">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- System Boundary -->
+        <mxCell id="sys" value="Web 管理后台" style="shape=umlFrame;whiteSpace=wrap;html=1;width=130;height=20;fillColor=none;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="30" width="500" height="480" as="geometry"/>
+        </mxCell>
+        <!-- Actor: Admin -->
+        <mxCell id="admin" value="管理员" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="40" height="60" as="geometry"/>
+        </mxCell>
+        <!-- Use Cases -->
+        <mxCell id="uc1" value="登录管理后台" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="50" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc2" value="查看数据大盘&#xa;(统计/图表)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc3" value="管理用户&#xa;(查看/改角色)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="195" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc4" value="管理识别记录&#xa;(查看/删除)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="270" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc5" value="管理新闻资讯&#xa;(创建/发布/删除)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="345" width="170" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc6" value="管理社区帖子&#xa;(查看/删除)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="420" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc7" value="管理百科词条&#xa;(查看/删除)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="490" y="420" width="160" height="55" as="geometry"/>
+        </mxCell>
+        <!-- Actor connections -->
+        <mxCell id="a1" style="" edge="1" source="admin" target="uc1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a2" style="" edge="1" source="admin" target="uc2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a3" style="" edge="1" source="admin" target="uc3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a4" style="" edge="1" source="admin" target="uc4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a5" style="" edge="1" source="admin" target="uc5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a6" style="" edge="1" source="admin" target="uc6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a7" style="" edge="1" source="admin" target="uc7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

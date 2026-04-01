@@ -1,0 +1,80 @@
+{% extends "admin_base.html" %}
+{% set active = "history" %}
+{% block page_title %}识别记录{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <span class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg></span>
+            识别记录管理
+        </div>
+        <div class="card-meta">共 {{ total }} 条</div>
+    </div>
+    <form method="GET" action="/admin/history" class="mb-16">
+        <div class="search-bar" style="max-width:360px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" name="keyword" placeholder="搜索病害名称..." value="{{ keyword }}">
+            <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+        </div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:56px;">图片</th>
+                <th>识别结果</th>
+                <th>英文标识</th>
+                <th>置信度</th>
+                <th>状态</th>
+                <th>用户ID</th>
+                <th>时间</th>
+                <th style="text-align:right;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in records %}
+            <tr>
+                <td>
+                    {% if r.full_image_url %}
+                    <img src="{{ r.full_image_url }}" class="img-thumb" alt="识别图片">
+                    {% else %}<span class="text-muted">—</span>{% endif %}
+                </td>
+                <td style="font-weight:500;">{{ r.prediction }}</td>
+                <td class="text-mono text-muted">{{ r.disease_en }}</td>
+                <td><span class="text-mono {% if r.confidence and r.confidence >= 80 %}conf-high{% elif r.confidence and r.confidence >= 50 %}conf-mid{% else %}conf-low{% endif %}"
+                        style="font-weight:600;">{{
+                        r.confidence }}%</span></td>
+                <td>
+                    {% if r.is_healthy %}<span class="tag tag-green">健康</span>
+                    {% else %}<span class="tag tag-red">病害</span>{% endif %}
+                </td>
+                <td class="text-muted">#{{ r.user_id }}</td>
+                <td class="text-muted text-sm">{% if r.created_at %}{{ r.created_at.strftime('%Y-%m-%d %H:%M') }}{% else %}—{% endif %}</td>
+                <td style="text-align:right;">
+                    <form method="POST" action="/admin/history/delete/{{ r.id }}" onsubmit="return confirm('确认删除？')">
+                        <button type="submit" class="btn btn-sm btn-danger">删除</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% if not records %}
+            <tr>
+                <td colspan="8" class="empty-state">暂无识别记录</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    {% if total_pages > 1 %}
+    <div class="pagination">
+        {% for p in range(1, total_pages + 1) %}
+        <a href="?page={{ p }}&keyword={{ keyword }}" class="{% if p == page %}current{% endif %}">{{ p }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

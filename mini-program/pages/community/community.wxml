@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-header">
+    <text class="page-title">💬 农友社区</text>
+    <view class="post-btn" bindtap="onCreatePost">发帖</view>
+  </view>
+  <view wx:if="{{posts.length === 0 && !loading}}" class="empty">暂无帖子，来发第一帖吧</view>
+  <view class="post-card" wx:for="{{posts}}" wx:key="id" bindtap="onTapPost" data-id="{{item.id}}">
+    <view class="post-user">
+      <view class="avatar">{{item.user.nickname[0] || '?'}}</view>
+      <view class="post-user-info">
+        <text class="post-nickname">{{item.user.nickname}}</text>
+        <text class="post-role" wx:if="{{item.user.role === 'expert'}}">🌟专家</text>
+      </view>
+      <text class="post-time">{{item.created_at}}</text>
+    </view>
+    <view class="post-title">{{item.title}}</view>
+    <view class="post-content">{{item.content}}</view>
+    <view class="post-images" wx:if="{{item.image_urls.length > 0}}">
+      <image wx:for="{{item.image_urls}}" wx:for-item="img" wx:key="*this" src="{{img}}" mode="aspectFill" class="post-img"></image>
+    </view>
+    <view class="post-actions">
+      <text class="post-action">👍 {{item.like_count}}</text>
+      <text class="post-action">💬 {{item.comment_count}}</text>
+    </view>
+  </view>
+  <view wx:if="{{loading}}" class="loading-tip">加载中...</view>
+  <view wx:if="{{noMore && posts.length > 0}}" class="loading-tip">没有更多了</view>
+</view>

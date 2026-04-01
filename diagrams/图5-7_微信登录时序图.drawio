@@ -1,0 +1,95 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.15 Chrome/134.0.6998.205 Electron/35.2.1 Safari/537.36" version="26.2.15">
+  <diagram id="seq-login" name="微信登录时序图">
+    <mxGraphModel dx="1409" dy="833" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;participant=umlActor;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="80" y="30" width="20" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="mp" value="微信小程序" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="240" y="30" width="120" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="wx" value="微信服务器" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="470" y="30" width="120" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="FastAPI&#xa;后端" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="700" y="30" width="100" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="MySQL" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fontSize=13;fontStyle=1;size=40;" parent="1" vertex="1">
+          <mxGeometry x="900" y="30" width="90" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="1. 点击登录按钮" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="110" as="sourcePoint" />
+            <mxPoint x="295" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2. wx.login() 获取 code" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="160" as="sourcePoint" />
+            <mxPoint x="525" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3. 返回临时 code" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="205" as="sourcePoint" />
+            <mxPoint x="305" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4. POST /api/user/login&#xa;{code, nickname, avatar_url}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="255" as="sourcePoint" />
+            <mxPoint x="745" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5. code2session(appid, secret, code)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="305" as="sourcePoint" />
+            <mxPoint x="525" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6. 返回 openid + session_key" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="350" as="sourcePoint" />
+            <mxPoint x="745" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7. 查询/创建用户(openid)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="395" as="sourcePoint" />
+            <mxPoint x="940" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8. 返回用户记录" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="940" y="435" as="sourcePoint" />
+            <mxPoint x="755" y="435" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9. 签发 JWT Token (72h)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=10;dashed=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="470" as="sourcePoint" />
+            <mxPoint x="755" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="800" y="470" />
+              <mxPoint x="800" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10. 返回 {token, user_info}" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="745" y="530" as="sourcePoint" />
+            <mxPoint x="305" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="11. 保存 token 到本地存储&#xa;显示登录成功" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;rounded=0;fontSize=11;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="580" as="sourcePoint" />
+            <mxPoint x="90" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

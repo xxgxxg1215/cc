@@ -1,0 +1,201 @@
+{% extends "admin_base.html" %}
+{% set active = "dashboard" %}
+{% block page_title %}数据大盘{% endblock %}
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Stat Cards -->
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="num">{{ user_count }}</div>
+            <div class="label">注册用户</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="num">{{ history_count }}</div>
+            <div class="label">识别总次数</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="num">{{ post_count }}</div>
+            <div class="label">社区帖子</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                    d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="num">{{ news_count }}</div>
+            <div class="label">新闻资讯</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="num">{{ enc_count }}</div>
+            <div class="label">百科词条</div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Row -->
+<div class="chart-grid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <span class="icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg></span>
+                近 7 天识别量趋势
+            </div>
+        </div>
+        <div id="lineChart" style="height:280px;"></div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <span class="icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 2a10 10 0 0 1 0 20" />
+                        <path d="M12 2v10l7 4" />
+                    </svg></span>
+                健康 / 病害比
+            </div>
+        </div>
+        <div id="pieChart" style="height:280px;"></div>
+    </div>
+</div>
+
+<!-- Bar + Recent -->
+<div class="chart-grid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <span class="icon rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 20V10M12 20V4M6 20v-6" />
+                    </svg></span>
+                高发病害 Top 10
+            </div>
+        </div>
+        <div id="barChart" style="height:280px;"></div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <span class="icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg></span>
+                最近识别记录
+            </div>
+            <a href="/admin/history" class="btn btn-sm btn-outline">查看全部</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>结果</th>
+                    <th>置信度</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in recent_records %}
+                <tr>
+                    <td>
+                        {% if r.is_healthy %}<span class="tag tag-green">健康</span>
+                        {% else %}<span class="tag tag-red">病害</span>{% endif %}
+                        <span style="margin-left:6px;font-weight:500;">{{ r.prediction }}</span>
+                    </td>
+                    <td class="text-mono">{{ r.confidence }}%</td>
+                    <td class="text-muted text-sm">{{ r.created_at.strftime('%m-%d %H:%M') }}</td>
+                </tr>
+                {% endfor %}
+                {% if not recent_records %}
+                <tr>
+                    <td colspan="3" style="text-align:center;color:var(--text-muted);padding:24px;">暂无记录</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var green = '#059669', greenLight = 'rgba(5,150,105,.1)';
+
+    // Parse Jinja variables safely
+    var dailyLabels = JSON.parse('{{ daily_labels|safe }}');
+    var dailyCounts = JSON.parse('{{ daily_counts|safe }}');
+    var healthyCount = Number('{{ healthy_count }}');
+    var diseaseCount = Number('{{ disease_count }}');
+    var diseaseNames = JSON.parse('{{ disease_names|safe }}');
+    var diseaseCounts = JSON.parse('{{ disease_counts|safe }}');
+
+    // Line Chart
+    var lc = echarts.init(document.getElementById('lineChart'));
+    lc.setOption({
+        tooltip: { trigger: 'axis', backgroundColor: '#fff', borderColor: '#E2E8F0', borderWidth: 1, textStyle: { color: '#0F172A', fontSize: 13 }, padding: [10, 14] },
+        xAxis: { type: 'category', data: dailyLabels, axisLabel: { color: '#94A3B8', fontSize: 11 }, axisLine: { lineStyle: { color: '#E2E8F0' } }, axisTick: { show: false } },
+        yAxis: { type: 'value', minInterval: 1, axisLabel: { color: '#94A3B8', fontSize: 11 }, splitLine: { lineStyle: { color: '#F1F5F9' } }, axisLine: { show: false }, axisTick: { show: false } },
+        series: [{
+            data: dailyCounts, type: 'line', smooth: true, symbolSize: 7, symbol: 'circle',
+            itemStyle: { color: green }, lineStyle: { width: 2.5 },
+            areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(5,150,105,.12)' }, { offset: 1, color: 'rgba(5,150,105,.01)' }] } }
+        }],
+        grid: { left: 40, right: 12, top: 12, bottom: 28 }
+    });
+
+    // Pie Chart
+    var pc = echarts.init(document.getElementById('pieChart'));
+    pc.setOption({
+        tooltip: { trigger: 'item', backgroundColor: '#fff', borderColor: '#E2E8F0', borderWidth: 1, textStyle: { color: '#0F172A' } },
+        legend: { bottom: 0, textStyle: { color: '#64748B', fontSize: 12 } },
+        series: [{
+            type: 'pie', radius: ['45%', '72%'], center: ['50%', '45%'],
+            label: { show: true, formatter: '{b}\n{d}%', color: '#64748B', fontSize: 12 },
+            itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 3 },
+            data: [
+                { value: healthyCount, name: '健康', itemStyle: { color: '#10B981' } },
+                { value: diseaseCount, name: '病害', itemStyle: { color: '#F43F5E' } }
+            ]
+        }]
+    });
+
+    // Bar Chart
+    var bc = echarts.init(document.getElementById('barChart'));
+    bc.setOption({
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, backgroundColor: '#fff', borderColor: '#E2E8F0', borderWidth: 1, textStyle: { color: '#0F172A', fontSize: 13 } },
+        xAxis: { type: 'category', data: diseaseNames, axisLabel: { rotate: 30, fontSize: 11, color: '#94A3B8' }, axisLine: { lineStyle: { color: '#E2E8F0' } }, axisTick: { show: false } },
+        yAxis: { type: 'value', minInterval: 1, axisLabel: { color: '#94A3B8', fontSize: 11 }, splitLine: { lineStyle: { color: '#F1F5F9' } }, axisLine: { show: false }, axisTick: { show: false } },
+        series: [{
+            data: diseaseCounts, type: 'bar', barWidth: 22,
+            itemStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: '#F43F5E' }, { offset: 1, color: '#FB7185' }] }, borderRadius: [5, 5, 0, 0] }
+        }],
+        grid: { left: 40, right: 12, top: 12, bottom: 80 }
+    });
+
+    window.addEventListener('resize', function () { lc.resize(); pc.resize(); bc.resize(); });
+</script>
+{% endblock %}

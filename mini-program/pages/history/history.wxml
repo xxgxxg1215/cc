@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-header">
+    <text class="page-title">识别历史</text>
+    <text class="clear-btn" bindtap="onClearHistory" wx:if="{{!isEmpty}}">清空</text>
+  </view>
+
+  <view wx:if="{{isEmpty}}" class="empty-state">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无识别记录</text>
+    <text class="empty-hint">去首页拍照识别吧</text>
+  </view>
+
+  <view wx:for="{{history}}" wx:key="id" class="history-card" bindtap="onTapRecord" data-record="{{item}}">
+    <image class="history-img" src="{{item.image_url}}" mode="aspectFill" wx:if="{{item.image_url}}"></image>
+    <view class="history-info">
+      <view class="history-name">{{item.prediction}}</view>
+      <view class="history-meta">
+        <text class="{{item.is_healthy ? 'tag-healthy' : 'tag-disease'}}">{{item.is_healthy ? '健康' : '病害'}}</text>
+        <text class="history-conf">{{item.confidence}}%</text>
+      </view>
+      <text class="history-time">{{item.created_at}}</text>
+    </view>
+    <view class="history-del" catchtap="onDeleteRecord" data-id="{{item.id}}">✕</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading-tip">加载中...</view>
+  <view wx:if="{{noMore && !isEmpty}}" class="loading-tip">没有更多了</view>
+</view>

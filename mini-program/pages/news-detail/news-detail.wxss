@@ -1,0 +1,7 @@
+.container { padding: 32rpx; }
+.news-title { font-size: 38rpx; font-weight: 700; color: #064E3B; line-height: 1.4; margin-bottom: 16rpx; }
+.news-meta { display: flex; justify-content: space-between; margin-bottom: 24rpx; }
+.news-author { font-size: 24rpx; color: #059669; }
+.news-date { font-size: 24rpx; color: #9CA3AF; }
+.news-cover { width: 100%; border-radius: 16rpx; margin-bottom: 24rpx; }
+.news-content { font-size: 28rpx; color: #374151; line-height: 2; }

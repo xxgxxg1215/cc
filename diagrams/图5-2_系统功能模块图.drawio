@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" modified="2026-03-06">
+  <diagram id="func-module" name="系统功能模块图">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- Root -->
+        <mxCell id="root" value="农作物病害识别系统" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="220" height="45" as="geometry"/>
+        </mxCell>
+        <!-- Level 1 -->
+        <mxCell id="m1" value="微信小程序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="110" width="150" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2" value="后端服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="435" y="110" width="150" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3" value="Web 管理后台" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="110" width="150" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="er" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="root" target="m1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="er2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="root" target="m2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="er3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="root" target="m3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Mini Program Sub-modules -->
+        <mxCell id="m1a" value="拍照/相册&#xa;识别" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="10" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1b" value="识别结果&#xa;展示" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1c" value="病害&#xa;百科" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="190" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1d" value="社区&#xa;交流" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="10" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1e" value="农业&#xa;资讯" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1f" value="个人中心&#xa;/历史" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="190" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1g" value="天气/&#xa;农事建议" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="325" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="em1a" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1a" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em1b" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1b" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em1c" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1c" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em1d" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1d" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em1e" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1e" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em1f" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1f" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em1g" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m1g" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Backend Sub-modules -->
+        <mxCell id="m2a" value="模型推理&#xa;服务" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2b" value="用户认证&#xa;模块" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2c" value="历史记录&#xa;模块" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2d" value="百科知识&#xa;模块" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2e" value="社区互动&#xa;模块" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2f" value="天气服务&#xa;模块" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2g" value="新闻资讯&#xa;模块" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="325" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="em2a" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2a" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2b" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2b" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2c" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2c" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2d" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2d" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2e" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2e" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2f" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2f" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2g" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="m2g" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Admin Sub-modules -->
+        <mxCell id="m3a" value="数据&#xa;大盘" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3b" value="用户&#xa;管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3c" value="新闻&#xa;管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="195" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3d" value="社区&#xa;管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3e" value="百科&#xa;管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3f" value="识别记录&#xa;管理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="840" y="260" width="80" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="em3a" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m3a" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em3b" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m3b" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em3c" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m3c" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em3d" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m3d" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em3e" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m3e" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em3f" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m3f" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

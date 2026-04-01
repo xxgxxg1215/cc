@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result",
+    "pages/chat/chat",
+    "pages/history/history",
+    "pages/encyclopedia/encyclopedia",
+    "pages/encyclopedia-detail/encyclopedia-detail",
+    "pages/community/community",
+    "pages/community-detail/community-detail",
+    "pages/community-post/community-post",
+    "pages/news/news",
+    "pages/news-detail/news-detail",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#059669",
+    "navigationBarTitleText": "农作物病害识别",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F0FDF4",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#6B7280",
+    "selectedColor": "#059669",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "识别",
+        "iconPath": "static/tab-home.png",
+        "selectedIconPath": "static/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/encyclopedia/encyclopedia",
+        "text": "百科",
+        "iconPath": "static/tab-book.png",
+        "selectedIconPath": "static/tab-book-active.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区",
+        "iconPath": "static/tab-community.png",
+        "selectedIconPath": "static/tab-community-active.png"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "顾问",
+        "iconPath": "static/tab-chat.png",
+        "selectedIconPath": "static/tab-chat-active.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "资讯",
+        "iconPath": "static/tab-news.png",
+        "selectedIconPath": "static/tab-news-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/tab-user.png",
+        "selectedIconPath": "static/tab-user-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取天气信息和农事建议"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
